@@ -5,8 +5,8 @@ import random
 def simulacion_diagnostico(num_personas=1000000):
  
     Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
-    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra: "))
-    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad: "))
+    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra (número entero): "))
+    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
     Prob_Enfermedad = Afecta_A/De_Cada
     Prob_FalsoPositivo = 0.02 #P(Positivo | NoEnfermo)
     Prob_FalsoNegativo = 0.01 #P(Negativo | Enfermo)
@@ -31,23 +31,25 @@ def simulacion_diagnostico(num_personas=1000000):
     
     print(f"\n=== RESULTADOS DE LA SIMULACIÓN (n={num_personas}) ===")
     print(f"Nombre de la enfermedad: {Nombre_Enfermedad}")
-    print(f"Número de personas enfermas: {Tiene_Enfermedad}")
-    print(f"Número de personas con test positivo: {Test_Positivo}")
-    print(f"Número de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo}")
-    print(f"Probabilidad empírica de que la persona seleccionada esté enferma dado que el test dió un resultado positivo: {Prob_Empirica}")
+    print(f"Número de personas enfermas: {Tiene_Enfermedad:.6f}")
+    print(f"Número de personas con test positivo: {Test_Positivo:.6f}")
+    print(f"Número de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
+    print(f"Probabilidad empírica de que la persona seleccionada esté enferma dado que el test dió un resultado positivo: {Prob_Empirica:.6f}")
     
     return Prob_Empirica
 
 def simulacion_diagnostico_configurable(num_personas=1000000):
     #PErmitimos que el usuario pueda configurar los valores del diagnósitoco
     Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
-    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra: "))
-    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad: "))
+    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra (número entero): "))
+    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
     
     # preguntamos al usuario las tasas de falsos positivos y negativos
     print("Recuerda que la probabilidad de falso positivo es la probabilidad de que el test sea positivo dado que la persona no tiene la enfermedad.") #P(Positivo | NoEnfermo)
+    print("Al ingresar un número decimal utiliza el punto (.) como separador decimal.")
     Prob_FalsoPositivo = float(input("Ingresa la probabilidad de falso positivo (0-1): "))
     print("Recuerda que la probabilidad de falso negativo es la probabilidad de que el test sea negativo dado que la persona tiene la enfermedad.") #P(Negativo | Enfermo)
+    print("Al ingresar un número decimal utiliza el punto (.) como separador decimal.")
     Prob_FalsoNegativo = float(input("Ingresa la probabilidad de falso negativo (0-1): "))
     
     Prob_Enfermedad = Afecta_A/De_Cada
@@ -74,9 +76,9 @@ def simulacion_diagnostico_configurable(num_personas=1000000):
     print(f"Probabilidad previa (prevalencia): {Prob_Enfermedad:.6f}")
     print(f"Tasa de falsos positivos: {Prob_FalsoPositivo:.6f}")
     print(f"Tasa de falsos negativos: {Prob_FalsoNegativo:.6f}")
-    print(f"Número de personas enfermas: {Tiene_Enfermedad}")
-    print(f"Número de personas con test positivo: {Test_Positivo}")
-    print(f"Número de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo}")
+    print(f"Número de personas enfermas: {Tiene_Enfermedad:.6f}")
+    print(f"Número de personas con test positivo: {Test_Positivo:.6f}")
+    print(f"Número de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
     print(f"Probabilidad empírica P(Enfermo|Positivo): {Prob_Empirica:.6f}")
     
     return Prob_Empirica
@@ -85,8 +87,8 @@ def simulacion_diagnostico_configurable(num_personas=1000000):
 def detectarEnfermedad_Exacto ():
     # calculamos la probabilidad exacta utilizando los valores del ejercicio
     Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
-    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra: "))
-    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad: "))
+    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra(número entero): "))
+    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
     
 
     Prob_FalsoPositivo = 0.02 #P(Positivo | NoEnfermo)
@@ -105,23 +107,25 @@ def detectarEnfermedad_Exacto ():
     
     print(f"\n=== RESULTADOS EXACTOS ===")
     print(f"Nombre de la enfermedad: {Nombre_Enfermedad}")
-    print(f"Número de personas enfermas: {Prob_Enfermo}")
-    print(f"Número de personas con test positivo: {Prob_Positivo}")
-    print(f"Número de personas enfermas y test positivo: {Prob_VerdaderoPositivo}")
-    print(f"Probabilidad exacta de que la persona seleccionada esté enferma dado que el test dió un resultado positivo: {resultado_Enfermo_Dado_Positivo}")
+    print(f"Número de personas enfermas: {Prob_Enfermo:.6f}")
+    print(f"Número de personas con test positivo: {Prob_Positivo:.6f}")
+    print(f"Número de personas enfermas y test positivo: {Prob_VerdaderoPositivo:.6f}")
+    print(f"Probabilidad exacta de que la persona seleccionada esté enferma dado que el test dió un resultado positivo: {resultado_Enfermo_Dado_Positivo:.6f}")
     
     return resultado_Enfermo_Dado_Positivo
 
 def detectarEnfermedad_Exacto_Configurable():
     # utilizamos esta función para hacer el cálculo exacto pero permitiendo al usuario ingresar los valores a aplicar
     Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
-    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra: "))
-    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad: "))
+    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra (número entero): "))
+    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
     
     # permitimos que ingrese las porbabilidades
     print("Recuerda que la probabilidad de falso positivo es la probabilidad de que el test sea positivo dado que la persona no tiene la enfermedad.") #P(Positivo | NoEnfermo)
+    print("Al ingresar un número decimal utiliza el punto (.) como separador decimal.")
     Prob_FalsoPositivo = float(input("Ingresa la probabilidad de falso positivo (0-1): ")) #P(Positivo | NoEnfermo)
     print("Recuerda que la probabilidad de falso negativo es la probabilidad de que el test sea negativo dado que la persona tiene la enfermedad.")
+    print("Al ingresar un número decimal utiliza el punto (.) como separador decimal.")
     Prob_FalsoNegativo = float(input("Ingresa la probabilidad de falso negativo (0-1): ")) #P(Negativo | Enfermo)
     
     Prob_VerdaderoPositivo = 1 - Prob_FalsoNegativo #P(Positivo | Enfermo)
