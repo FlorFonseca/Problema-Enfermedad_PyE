@@ -32,8 +32,8 @@ def simulacion_diagnostico(num_personas=1000000):
     print(f"\n=== RESULTADOS DE LA SIMULACIÓN (n={num_personas}) ===")
     print(f"Nombre de la enfermedad: {Nombre_Enfermedad}")
     print(f"Número de personas enfermas: {Tiene_Enfermedad}")
-    print(f"Probabilidad de personas con test positivo: {Test_Positivo:.6f}")
-    print(f"Probabilidad de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
+    print(f"Cantidad de personas con test positivo: {Test_Positivo}")
+    print(f"Cantidad de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo}")
     print(f"Probabilidad empírica de que la persona seleccionada esté enferma dado que el test dió un resultado positivo: {Prob_Empirica:.6f}")
     
     return Prob_Empirica
@@ -77,8 +77,8 @@ def simulacion_diagnostico_configurable(num_personas=1000000):
     print(f"Tasa de falsos positivos: {Prob_FalsoPositivo:.6f}")
     print(f"Tasa de falsos negativos: {Prob_FalsoNegativo:.6f}")
     print(f"Número de personas enfermas: {Tiene_Enfermedad:}")
-    print(f"Probabilidad de personas con test positivo: {Test_Positivo:.6f}")
-    print(f"Probabilidad de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
+    print(f"Cantidad de personas con test positivo: {Test_Positivo}")
+    print(f"Cantidad de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
     print(f"Probabilidad empírica P(Enfermo|Positivo): {Prob_Empirica:.6f}")
     
     return Prob_Empirica
