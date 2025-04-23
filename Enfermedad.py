@@ -1,5 +1,5 @@
 #Enfermedad
-#import numpy as np
+import numpy as np
 import random
 
 def simulacion_diagnostico(num_personas=1000000):
