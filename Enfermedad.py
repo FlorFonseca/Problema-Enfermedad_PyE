@@ -1,12 +1,12 @@
 #Enfermedad
-import numpy as np
+#import numpy as np
 import random
 
 def simulacion_diagnostico(num_personas=1000000):
  
     Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
-    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra (número entero): "))
-    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
+    De_Cada = 10000
+    Afecta_A = 1
     Prob_Enfermedad = Afecta_A/De_Cada
     Prob_FalsoPositivo = 0.02 #P(Positivo | NoEnfermo)
     Prob_FalsoNegativo = 0.01 #P(Negativo | Enfermo)
@@ -31,9 +31,9 @@ def simulacion_diagnostico(num_personas=1000000):
     
     print(f"\n=== RESULTADOS DE LA SIMULACIÓN (n={num_personas}) ===")
     print(f"Nombre de la enfermedad: {Nombre_Enfermedad}")
-    print(f"Número de personas enfermas: {Tiene_Enfermedad:.6f}")
-    print(f"Número de personas con test positivo: {Test_Positivo:.6f}")
-    print(f"Número de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
+    print(f"Número de personas enfermas: {Tiene_Enfermedad}")
+    print(f"Probabilidad de personas con test positivo: {Test_Positivo:.6f}")
+    print(f"Probabilidad de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
     print(f"Probabilidad empírica de que la persona seleccionada esté enferma dado que el test dió un resultado positivo: {Prob_Empirica:.6f}")
     
     return Prob_Empirica
@@ -76,9 +76,9 @@ def simulacion_diagnostico_configurable(num_personas=1000000):
     print(f"Probabilidad previa (prevalencia): {Prob_Enfermedad:.6f}")
     print(f"Tasa de falsos positivos: {Prob_FalsoPositivo:.6f}")
     print(f"Tasa de falsos negativos: {Prob_FalsoNegativo:.6f}")
-    print(f"Número de personas enfermas: {Tiene_Enfermedad:.6f}")
-    print(f"Número de personas con test positivo: {Test_Positivo:.6f}")
-    print(f"Número de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
+    print(f"Número de personas enfermas: {Tiene_Enfermedad:}")
+    print(f"Probabilidad de personas con test positivo: {Test_Positivo:.6f}")
+    print(f"Probabilidad de personas enfermas y test positivo: {Tiene_Enfermedad_Y_Test_Positivo:.6f}")
     print(f"Probabilidad empírica P(Enfermo|Positivo): {Prob_Empirica:.6f}")
     
     return Prob_Empirica
@@ -87,9 +87,8 @@ def simulacion_diagnostico_configurable(num_personas=1000000):
 def detectarEnfermedad_Exacto ():
     # calculamos la probabilidad exacta utilizando los valores del ejercicio
     Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
-    De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra(número entero): "))
-    Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
-    
+    De_Cada = 10000
+    Afecta_A = 1
 
     Prob_FalsoPositivo = 0.02 #P(Positivo | NoEnfermo)
     Prob_FalsoNegativo = 0.01 #P(Negativo | Enfermo)
@@ -107,9 +106,9 @@ def detectarEnfermedad_Exacto ():
     
     print(f"\n=== RESULTADOS EXACTOS ===")
     print(f"Nombre de la enfermedad: {Nombre_Enfermedad}")
-    print(f"Número de personas enfermas: {Prob_Enfermo:.6f}")
-    print(f"Número de personas con test positivo: {Prob_Positivo:.6f}")
-    print(f"Número de personas enfermas y test positivo: {Prob_VerdaderoPositivo:.6f}")
+    print(f"Probabilidad de personas enfermas: {Prob_Enfermo:.6f}")
+    print(f"Probabilidad de personas con test positivo: {Prob_Positivo:.6f}")
+    print(f"Probabilidad de personas enfermas y test positivo: {Prob_VerdaderoPositivo:.6f}")
     print(f"Probabilidad exacta de que la persona seleccionada esté enferma dado que el test dió un resultado positivo: {resultado_Enfermo_Dado_Positivo:.6f}")
     
     return resultado_Enfermo_Dado_Positivo
@@ -155,22 +154,36 @@ def menu_principal():
     while True:
         print("\n=== SIMULADOR DE PRUEBAS DIAGNÓSTICAS ===")
         print("1. Simulación de diagnóstico con valores del ejercicio")
-        print("2. Simulación de diagnóstico con valores configurables")
-        print("3. Cálculo exacto con valores del ejercicio")
+        print("2. Cálculo exacto con valores del ejercicio")
+        print("3. Simulación de diagnóstico con valores configurables")
         print("4. Cálculo exacto con valores configurables")
-        print("5. Salir")
+        print("5. Comparar simulación y cálculo exacto (parámetros ejericio)")
+        print("6. Comparar simulación y cálculo exacto (configurable)")
+        print("0. Salir")
         
-        opcion = input("\nSeleccione una opción (1-5): ")
+        opcion = input("\nSeleccione una opción (0-6): ")
         
         if opcion == "1":
             simulacion_diagnostico()
         elif opcion == "2":
-            simulacion_diagnostico_configurable()
-        elif opcion == "3":
             detectarEnfermedad_Exacto()
+        elif opcion == "3":
+            simulacion_diagnostico_configurable()
         elif opcion == "4":
             detectarEnfermedad_Exacto_Configurable()
         elif opcion == "5":
+            print("\n--- COMPARACIÓN ENTRE SIMULACIÓN Y RESULTADO EXACTO (parámetros fijos) ---")
+            resultado_simulado = simulacion_diagnostico()
+            resultado_exacto = detectarEnfermedad_Exacto()
+            diferencia = abs(resultado_simulado - resultado_exacto)
+            print(f"\nDiferencia entre simulación y resultado exacto: {diferencia:.6f}")
+        elif opcion == "6":
+            print("\n--- COMPARACIÓN ENTRE SIMULACIÓN Y RESULTADO EXACTO (configurable) ---")
+            resultado_simulado = simulacion_diagnostico_configurable()
+            resultado_exacto = detectarEnfermedad_Exacto_Configurable()
+            diferencia = abs(resultado_simulado - resultado_exacto)
+            print(f"\nDiferencia entre simulación y resultado exacto: {diferencia:.6f}")
+        elif opcion == "0":
             print("Gracias por usar el simulador. ¡Hasta pronto!")
             break
         else:
