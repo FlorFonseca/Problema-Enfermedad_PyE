@@ -1,10 +1,9 @@
 #Enfermedad
-import numpy as np
 import random
 
 def simulacion_diagnostico(num_personas=1000000):
  
-    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
+    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad para la simulación: ")
     De_Cada = 10000
     Afecta_A = 1
     Prob_Enfermedad = Afecta_A/De_Cada
@@ -40,7 +39,7 @@ def simulacion_diagnostico(num_personas=1000000):
 
 def simulacion_diagnostico_configurable(num_personas=1000000):
     #PErmitimos que el usuario pueda configurar los valores del diagnósitoco
-    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
+    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad para la simulación: ")
     De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra (número entero): "))
     Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
     
@@ -86,7 +85,7 @@ def simulacion_diagnostico_configurable(num_personas=1000000):
 
 def detectarEnfermedad_Exacto ():
     # calculamos la probabilidad exacta utilizando los valores del ejercicio
-    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
+    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad para calcular la probabilidad exacta: ")
     De_Cada = 10000
     Afecta_A = 1
 
@@ -115,7 +114,7 @@ def detectarEnfermedad_Exacto ():
 
 def detectarEnfermedad_Exacto_Configurable():
     # utilizamos esta función para hacer el cálculo exacto pero permitiendo al usuario ingresar los valores a aplicar
-    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad: ")
+    Nombre_Enfermedad = input("Ingresa el nombre de la enfermedad para calcular la probabilidad exacta: ")
     De_Cada = int(input("Ingresa la cantidad de integrantes de la muestra (número entero): "))
     Afecta_A = int(input("Ingresa a la cantidad de personas que afecta esta enfermedad (número entero): "))
     
